@@ -1,8 +1,8 @@
 ---
 name: arxiv-analyze
 description: Fetch and analyze an arXiv paper via tiered fallback (markdown -> arXiv HTML -> ar5iv -> PDF). Rate-limited for arxiv2md (28 req/min, deterministic). Produces a structured summary with citation, problem, key claims, method, results, limitations. Use when the user says "analyze arxiv paper", "summarize arxiv", "read paper", "what does this paper say", or provides an arXiv ID/URL to analyze.
-user-invocable: true
-allowed-tools: Bash(python3 *), Read, Write, Edit, AskUserQuestion, WebFetch
+license: MIT
+compatibility: Requires Python 3.11+ (stdlib only) and internet access to arxiv.org, arxiv2md.org, and ar5iv.labs.arxiv.org
 ---
 
 # arXiv Analyze

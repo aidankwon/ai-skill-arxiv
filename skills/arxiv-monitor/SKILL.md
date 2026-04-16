@@ -1,8 +1,8 @@
 ---
 name: arxiv-monitor
 description: Monitor arXiv for new papers matching saved queries/categories. Manages a watchlist with deterministic "seen" tracking so subsequent checks return only new material. Use when the user says "watch arxiv", "track arxiv", "new papers on", "arxiv monitor", "check my arxiv watches", or wants periodic discovery. Depends on arxiv-search (must be installed as a sibling skill).
-user-invocable: true
-allowed-tools: Bash(python3 *), Read, Write, AskUserQuestion
+license: MIT
+compatibility: Requires Python 3.11+ (stdlib only), internet access to export.arxiv.org, and the arxiv-search skill installed as a sibling
 ---
 
 # arXiv Monitor

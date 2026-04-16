@@ -1,6 +1,6 @@
 # ai-skill-arxiv
 
-A suite of three Claude Code skills for working with arXiv research papers: search, analyze, and monitor — stdlib Python only, zero dependencies.
+A suite of three [Agent Skills](https://agentskills.io) for working with arXiv research papers: search, analyze, and monitor — stdlib Python only, zero dependencies. Works with any skills-compatible agent (Claude, Cursor, Gemini CLI, OpenCode, Goose, and [many more](https://agentskills.io)).
 
 ## What you get
 
@@ -53,7 +53,9 @@ npx skills add dsebastien/ai-skill-arxiv --list
 
 Note: `arxiv-monitor` invokes `arxiv-search` as a subprocess. If you install `arxiv-monitor` alone, `check`/`check-all` will fail — install `arxiv-search` alongside it.
 
-### Manual install (Claude Code default location)
+### Manual install
+
+Skills follow the standard [Agent Skills](https://agentskills.io) layout, so any skills-compatible agent can discover them. Copy the skills you want to your agent's skills directory (e.g. `~/.claude/skills/` for Claude Code, or the equivalent path for your agent):
 
 ```bash
 git clone https://github.com/dsebastien/ai-skill-arxiv.git
@@ -63,6 +65,15 @@ cp -r ai-skill-arxiv/skills/arxiv-monitor ~/.claude/skills/
 ```
 
 Skills are auto-discovered from their `SKILL.md` frontmatter.
+
+### Validate the skills
+
+Check each skill against the Agent Skills specification:
+
+```bash
+npx skills-ref validate ai-skill-arxiv/skills/arxiv-search
+# Or via the reference lib: https://github.com/agentskills/agentskills/tree/main/skills-ref
+```
 
 ## Requirements
 
@@ -184,6 +195,8 @@ MIT. See `LICENSE`.
 
 ## Credits
 
+- [Agent Skills](https://agentskills.io) — the open standard these skills conform to
 - [arxiv2md](https://github.com/timf34/arxiv2md) — markdown rendering service
 - [ar5iv](https://ar5iv.labs.arxiv.org/) — HTML renderer for arXiv papers
 - [vercel-labs/skills](https://github.com/vercel-labs/skills) — the `skills add` CLI that makes multi-skill repos installable à la carte
+- [skills-ref](https://github.com/agentskills/agentskills/tree/main/skills-ref) — reference validator for the Agent Skills specification

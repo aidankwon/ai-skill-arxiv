@@ -1,8 +1,8 @@
 ---
 name: arxiv-search
 description: Search arXiv for research papers by topic, category, author, or date range. Returns structured JSON with titles, authors, abstracts, and links - no full text (pair with arxiv-analyze for that). Use when the user says "search arxiv", "find arxiv papers", "arxiv papers on", "latest papers about", or "arxiv research".
-user-invocable: true
-allowed-tools: Bash(python3 *), Read, AskUserQuestion
+license: MIT
+compatibility: Requires Python 3.11+ (stdlib only) and internet access to export.arxiv.org
 ---
 
 # arXiv Search
