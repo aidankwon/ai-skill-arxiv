@@ -1,0 +1,29 @@
+# Editor / OS
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Runtime logs
+*.log
+
+# Local environment files
+.env
+.env.local
+*.env
+
+# Runtime state produced by the skills (should not be committed)
+skills/arxiv-analyze/scripts/arxiv2md_ratelimit.json
+skills/arxiv-analyze/scripts/.ratelimit.*.tmp
+skills/arxiv-monitor/scripts/watchlist.json
+skills/arxiv-monitor/scripts/.watchlist.*.tmp
+
+# Claude agent state (if someone clones into a workspace and runs Claude against it)
+.claude/
