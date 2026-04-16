@@ -152,6 +152,12 @@ python3 skills/arxiv-monitor/scripts/arxiv_monitor.py remove "interp-ml"
 3. [ar5iv](https://ar5iv.labs.arxiv.org/) — broader coverage for older papers
 4. `arxiv.org/pdf/<id>` — last resort, URL returned for your PDF reader
 
+**Plus an opt-in fifth tier** (`--tier tex`): downloads `arxiv.org/src/<id>`, extracts the TeX tarball, auto-detects the main entrypoint, and flattens `\input`/`\include`/`\import`/`\subimport` recursively. Canonical ground truth — available for every paper regardless of age, no third-party dependency, pristine equations. Token-expensive compared to rendered markdown, so opt-in via the flag.
+
+### Disk cache
+
+Fetched content is cached at `$XDG_CACHE_HOME/ai-skill-arxiv/<arxiv_id>/` (defaults to `~/.cache/ai-skill-arxiv/<arxiv_id>/`). Repeat reads of the same paper are instant, offline-safe, and cost zero rate-limit budget. Use `--no-cache` to force a fresh fetch or `--cache-clear <id>` to wipe one paper.
+
 ### Deterministic rate limiting for arxiv2md
 
 arxiv2md allows 30 requests/minute per IP. The script self-throttles at 28 (safety margin) via `scripts/arxiv2md_ratelimit.json` — an array of Unix timestamps. On every call:
@@ -200,3 +206,4 @@ MIT. See `LICENSE`.
 - [ar5iv](https://ar5iv.labs.arxiv.org/) — HTML renderer for arXiv papers
 - [vercel-labs/skills](https://github.com/vercel-labs/skills) — the `skills add` CLI that makes multi-skill repos installable à la carte
 - [skills-ref](https://github.com/agentskills/agentskills/tree/main/skills-ref) — reference validator for the Agent Skills specification
+- [karpathy/nanochat](https://github.com/karpathy/nanochat/blob/master/.claude/skills/read-arxiv-paper/SKILL.md) — the TeX-source + disk-cache pattern was inspired by Karpathy's `read-arxiv-paper` skill
