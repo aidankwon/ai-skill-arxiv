@@ -59,9 +59,9 @@ Skills follow the standard [Agent Skills](https://agentskills.io) layout, so any
 
 ```bash
 git clone https://github.com/dsebastien/ai-skill-arxiv.git
-cp -r ai-skill-arxiv/skills/arxiv-search  ~/.claude/skills/
-cp -r ai-skill-arxiv/skills/arxiv-analyze ~/.claude/skills/
-cp -r ai-skill-arxiv/skills/arxiv-monitor ~/.claude/skills/
+cp -r ai-skill-arxiv/plugins/arxiv-skills/skills/arxiv-search  ~/.claude/skills/
+cp -r ai-skill-arxiv/plugins/arxiv-skills/skills/arxiv-analyze ~/.claude/skills/
+cp -r ai-skill-arxiv/plugins/arxiv-skills/skills/arxiv-monitor ~/.claude/skills/
 ```
 
 Skills are auto-discovered from their `SKILL.md` frontmatter.
@@ -71,7 +71,7 @@ Skills are auto-discovered from their `SKILL.md` frontmatter.
 Check each skill against the Agent Skills specification:
 
 ```bash
-npx skills-ref validate ai-skill-arxiv/skills/arxiv-search
+npx skills-ref validate ai-skill-arxiv/plugins/arxiv-skills/skills/arxiv-search
 # Or via the reference lib: https://github.com/agentskills/agentskills/tree/main/skills-ref
 ```
 
@@ -100,9 +100,9 @@ Each skill's script is a normal CLI. You can use them directly.
 ### Search
 
 ```bash
-python3 skills/arxiv-search/scripts/arxiv_search.py "mechanistic interpretability" --max 20
-python3 skills/arxiv-search/scripts/arxiv_search.py --category cs.LG --sort-by submittedDate
-python3 skills/arxiv-search/scripts/arxiv_search.py "sparse autoencoders" \
+python3 plugins/arxiv-skills/skills/arxiv-search/scripts/arxiv_search.py "mechanistic interpretability" --max 20
+python3 plugins/arxiv-skills/skills/arxiv-search/scripts/arxiv_search.py --category cs.LG --sort-by submittedDate
+python3 plugins/arxiv-skills/skills/arxiv-search/scripts/arxiv_search.py "sparse autoencoders" \
     --from 2025-01-01 --to 2026-04-16
 ```
 
@@ -110,35 +110,35 @@ python3 skills/arxiv-search/scripts/arxiv_search.py "sparse autoencoders" \
 
 ```bash
 # Auto-tier fallback: markdown → HTML → ar5iv → PDF
-python3 skills/arxiv-analyze/scripts/arxiv_fetch.py 2501.11120
+python3 plugins/arxiv-skills/skills/arxiv-analyze/scripts/arxiv_fetch.py 2501.11120
 
 # Force a specific tier
-python3 skills/arxiv-analyze/scripts/arxiv_fetch.py 2501.11120 --tier html
+python3 plugins/arxiv-skills/skills/arxiv-analyze/scripts/arxiv_fetch.py 2501.11120 --tier html
 
 # Metadata only
-python3 skills/arxiv-analyze/scripts/arxiv_fetch.py 2501.11120 --metadata-only
+python3 plugins/arxiv-skills/skills/arxiv-analyze/scripts/arxiv_fetch.py 2501.11120 --metadata-only
 
 # Check arxiv2md rate-limit state
-python3 skills/arxiv-analyze/scripts/arxiv_fetch.py --ratelimit-status
+python3 plugins/arxiv-skills/skills/arxiv-analyze/scripts/arxiv_fetch.py --ratelimit-status
 ```
 
 ### Monitor
 
 ```bash
 # Add a watch
-python3 skills/arxiv-monitor/scripts/arxiv_monitor.py add "interp-ml" \
+python3 plugins/arxiv-skills/skills/arxiv-monitor/scripts/arxiv_monitor.py add "interp-ml" \
     --query "mechanistic interpretability" --category cs.LG --max 30
 
 # Check (returns only new papers since last check)
-python3 skills/arxiv-monitor/scripts/arxiv_monitor.py check "interp-ml"
+python3 plugins/arxiv-skills/skills/arxiv-monitor/scripts/arxiv_monitor.py check "interp-ml"
 
 # Check everything
-python3 skills/arxiv-monitor/scripts/arxiv_monitor.py check-all
+python3 plugins/arxiv-skills/skills/arxiv-monitor/scripts/arxiv_monitor.py check-all
 
 # Inspect, reset, remove
-python3 skills/arxiv-monitor/scripts/arxiv_monitor.py list
-python3 skills/arxiv-monitor/scripts/arxiv_monitor.py reset "interp-ml"
-python3 skills/arxiv-monitor/scripts/arxiv_monitor.py remove "interp-ml"
+python3 plugins/arxiv-skills/skills/arxiv-monitor/scripts/arxiv_monitor.py list
+python3 plugins/arxiv-skills/skills/arxiv-monitor/scripts/arxiv_monitor.py reset "interp-ml"
+python3 plugins/arxiv-skills/skills/arxiv-monitor/scripts/arxiv_monitor.py remove "interp-ml"
 ```
 
 ## Design notes
