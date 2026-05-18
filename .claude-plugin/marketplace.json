@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "arxiv-skills",
+  "description": "Search, analyze, and monitor arXiv research papers. Stdlib Python only.",
+  "owner": {
+    "name": "aidankwon",
+    "url": "https://github.com/aidankwon"
+  },
+  "plugins": [
+    {
+      "name": "arxiv-skills",
+      "description": "Three skills for arXiv: search papers, fetch and analyze full text, and track new papers over time.",
+      "source": "./plugins/arxiv-skills",
+      "category": "research",
+      "tags": ["arxiv", "research", "papers", "ai", "ml"]
+    }
+  ]
+}
