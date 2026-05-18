@@ -1,0 +1,11 @@
+{
+  "name": "arxiv-skills",
+  "version": "1.0.0",
+  "description": "Search, analyze, and monitor arXiv research papers. Stdlib Python only, no pip install.",
+  "author": {
+    "name": "aidankwon"
+  },
+  "homepage": "https://github.com/aidankwon/ai-skill-arxiv",
+  "repository": "https://github.com/aidankwon/ai-skill-arxiv",
+  "license": "MIT"
+}
