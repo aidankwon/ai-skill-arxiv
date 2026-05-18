@@ -37,7 +37,7 @@ Each skill follows the Agent Skills spec: `SKILL.md` (frontmatter + instructions
 `arxiv-monitor` shells out to `arxiv-search` via subprocess. The path is resolved at runtime relative to the script's location:
 
 ```
-skills/arxiv-monitor/scripts/arxiv_monitor.py
+plugins/arxiv-skills/skills/arxiv-monitor/scripts/arxiv_monitor.py
   → SEARCH_SCRIPT = ../../arxiv-search/scripts/arxiv_search.py
 ```
 
@@ -45,8 +45,8 @@ This means the two skills must be installed as siblings. Installing only `arxiv-
 
 ### Persistent state (two files, both atomic)
 
-- `skills/arxiv-analyze/scripts/arxiv2md_ratelimit.json` — rolling array of Unix timestamps for the arxiv2md 28 req/min cap. Pruned to the 60-second window on every call. Written via `tempfile` + `os.replace`.
-- `skills/arxiv-monitor/scripts/watchlist.json` — watch configs + `seen_ids` per watch (capped at 500). Written via `tempfile` + `os.replace`.
+- `plugins/arxiv-skills/skills/arxiv-analyze/scripts/arxiv2md_ratelimit.json` — rolling array of Unix timestamps for the arxiv2md 28 req/min cap. Pruned to the 60-second window on every call. Written via `tempfile` + `os.replace`.
+- `plugins/arxiv-skills/skills/arxiv-monitor/scripts/watchlist.json` — watch configs + `seen_ids` per watch (capped at 500). Written via `tempfile` + `os.replace`.
 
 Never edit either file during an active run. Delete `arxiv2md_ratelimit.json` to reset the rate-limit counter.
 
